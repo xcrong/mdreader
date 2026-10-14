@@ -17,28 +17,32 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build chrome + firefox zips
+      - name: Build chromium + firefox packages (uBlock-style)
         run: |
-          rm -f mdreader-chrome.zip mdreader-firefox.zip
-          rm -rf /tmp/pkg-chrome /tmp/pkg-firefox
-          mkdir -p /tmp/pkg-chrome /tmp/pkg-firefox
+          VER="${GITHUB_REF_NAME#v}"
+          if [ -z "$VER" ] || [ "$VER" = "$GITHUB_REF_NAME" ]; then
+            VER="$(python3 -c "import json; print(json.load(open('manifest.json'))['version'])")"
+          fi
+          echo "Version: $VER"
+          rm -f "mdreader_${VER}.chromium.zip" "mdreader_${VER}.firefox.zip" "mdreader_${VER}.firefox.xpi" SHA256SUMS.txt
+          rm -rf /tmp/pkg-chromium /tmp/pkg-firefox
+          mkdir -p /tmp/pkg-chromium /tmp/pkg-firefox
 
-          # shared excludes
           EXCLUDES=('*.git*' 'node_modules/*' '.github/*' '*.md' 'docs/*' 'icon.svg' '*.zip')
 
-          # ---- chrome: service_worker only (remove scripts to avoid Web Store warnings) ----
-          cp -r . /tmp/pkg-chrome/
+          # ---- chromium: service_worker only ----
+          cp -r . /tmp/pkg-chromium/
           python3 - <<'PY'
           import json
-          p = "/tmp/pkg-chrome/manifest.json"
+          p = "/tmp/pkg-chromium/manifest.json"
           m = json.load(open(p))
           m.get("background", {}).pop("scripts", None)
           json.dump(m, open(p, "w"), indent=2)
-          print("chrome background:", m.get("background"))
+          print("chromium background:", m.get("background"))
           PY
-          (cd /tmp/pkg-chrome && zip -r "$GITHUB_WORKSPACE/mdreader-chrome.zip" . $(printf -- '-x %s ' "${EXCLUDES[@]}"))
+          (cd /tmp/pkg-chromium && zip -r "$GITHUB_WORKSPACE/mdreader_${VER}.chromium.zip" . $(printf -- '-x %s ' "${EXCLUDES[@]}"))
 
-          # ---- firefox: scripts only (service_worker unsupported, see mozilla bug 1573659) ----
+          # ---- firefox: scripts only (service_worker unsupported, mozilla bug 1573659) ----
           cp -r . /tmp/pkg-firefox/
           python3 - <<'PY'
           import json
@@ -53,22 +57,36 @@ jobs:
           json.dump(m, open(p, "w"), indent=2)
           print("firefox background:", m.get("background"))
           PY
-          (cd /tmp/pkg-firefox && zip -r "$GITHUB_WORKSPACE/mdreader-firefox.zip" . $(printf -- '-x %s ' "${EXCLUDES[@]}"))
+          (cd /tmp/pkg-firefox && zip -r "$GITHUB_WORKSPACE/mdreader_${VER}.firefox.zip" . $(printf -- '-x %s ' "${EXCLUDES[@]}"))
+          # unsigned xpi = same content, renamed (AMO signed .xpi needs web-ext sign + API secrets)
+          cp "mdreader_${VER}.firefox.zip" "mdreader_${VER}.firefox.xpi"
 
-          ls -lh mdreader-*.zip
+          sha256sum "mdreader_${VER}.chromium.zip" "mdreader_${VER}.firefox.zip" "mdreader_${VER}.firefox.xpi" > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+          ls -lh "mdreader_${VER}".* SHA256SUMS.txt
+
+      - name: Optional CRX (needs CRX_PRIVATE_KEY secret)
+        if: ${{ secrets.CRX_PRIVATE_KEY != '' }}
+        run: |
+          echo "CRX build requested but skipped: Chrome dropped sideloaded CRX; use Web Store or chromium.zip"
+          echo "Set CW_* secrets + chrome-webstore upload workflow for store publishing instead."
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: mdreader
           path: |
-            mdreader-chrome.zip
-            mdreader-firefox.zip
+            mdreader_*.chromium.zip
+            mdreader_*.firefox.zip
+            mdreader_*.firefox.xpi
+            SHA256SUMS.txt
 
       - name: Attach to release
         if: github.event_name == 'release' || startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            mdreader-chrome.zip
-            mdreader-firefox.zip
+            mdreader_*.chromium.zip
+            mdreader_*.firefox.zip
+            mdreader_*.firefox.xpi
+            SHA256SUMS.txt
