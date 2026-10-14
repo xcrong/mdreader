@@ -41,8 +41,3 @@ jobs:
 - `CW_CLIENT_ID`
 - `CW_CLIENT_SECRET`
 - `CW_REFRESH_TOKEN`
-```
-PY? no
-```
-Need remove weird trailing? Let's not include PY. Ensure file ends properly. Fix trailing.<|end|><|start|><|start|>assistant to=edit<|channel|>analysis <|constrain|>xml<|message|><rfl:parameter name="path">
-/home/xcrong/code/mdreader/docs/chrome-publish.md
