@@ -17,25 +17,58 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build zip
+      - name: Build chrome + firefox zips
         run: |
-          rm -f mdreader.zip
-          zip -r mdreader.zip . \
-            -x '*.git*' \
-            -x 'node_modules/*' \
-            -x '.github/*' \
-            -x '*.md' \
-            -x 'docs/*' \
-            -x 'icon.svg'
+          rm -f mdreader-chrome.zip mdreader-firefox.zip
+          rm -rf /tmp/pkg-chrome /tmp/pkg-firefox
+          mkdir -p /tmp/pkg-chrome /tmp/pkg-firefox
 
-      - name: Upload artifact
+          # shared excludes
+          EXCLUDES=('*.git*' 'node_modules/*' '.github/*' '*.md' 'docs/*' 'icon.svg' '*.zip')
+
+          # ---- chrome: service_worker only (remove scripts to avoid Web Store warnings) ----
+          cp -r . /tmp/pkg-chrome/
+          python3 - <<'PY'
+          import json
+          p = "/tmp/pkg-chrome/manifest.json"
+          m = json.load(open(p))
+          m.get("background", {}).pop("scripts", None)
+          json.dump(m, open(p, "w"), indent=2)
+          print("chrome background:", m.get("background"))
+          PY
+          (cd /tmp/pkg-chrome && zip -r "$GITHUB_WORKSPACE/mdreader-chrome.zip" . $(printf -- '-x %s ' "${EXCLUDES[@]}"))
+
+          # ---- firefox: scripts only (service_worker unsupported, see mozilla bug 1573659) ----
+          cp -r . /tmp/pkg-firefox/
+          python3 - <<'PY'
+          import json
+          p = "/tmp/pkg-firefox/manifest.json"
+          m = json.load(open(p))
+          bg = m.setdefault("background", {})
+          bg.pop("service_worker", None)
+          bg["scripts"] = ["background.js"]
+          g = m.setdefault("browser_specific_settings", {}).setdefault("gecko", {})
+          g.setdefault("id", "pagetomarkdown@xcrong.local")
+          g.setdefault("strict_min_version", "109.0")
+          json.dump(m, open(p, "w"), indent=2)
+          print("firefox background:", m.get("background"))
+          PY
+          (cd /tmp/pkg-firefox && zip -r "$GITHUB_WORKSPACE/mdreader-firefox.zip" . $(printf -- '-x %s ' "${EXCLUDES[@]}"))
+
+          ls -lh mdreader-*.zip
+
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: mdreader
-          path: mdreader.zip
+          path: |
+            mdreader-chrome.zip
+            mdreader-firefox.zip
 
       - name: Attach to release
         if: github.event_name == 'release' || startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          files: mdreader.zip
+          files: |
+            mdreader-chrome.zip
+            mdreader-firefox.zip
