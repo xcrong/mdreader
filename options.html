@@ -2,34 +2,77 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MdReader Options</title>
   <style>
     :root {
-      --bg: #ffffff; --fg: #111827; --muted: #6b7280; --border: #d1d5db;
-      --input: #ffffff; --btn: #2563eb; --btn-hover: #1d4ed8; --ok: #16a34a;
+      --bg: #f3f4f6; --card: #ffffff; --fg: #111827; --muted: #6b7280;
+      --border: #d1d5db; --input: #ffffff; --primary: #2563eb; --primary-hover: #1d4ed8;
+      --danger: #dc2626; --ok: #16a34a; --warn: #d97706;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #111827; --fg: #f3f4f6; --muted: #9ca3af; --border: #374151;
-        --input: #1f2937; --btn: #3b82f6; --btn-hover: #2563eb; --ok: #4ade80;
+        --bg: #0f172a; --card: #111827; --fg: #f3f4f6; --muted: #9ca3af;
+        --border: #374151; --input: #1f2937; --primary: #3b82f6; --primary-hover: #2563eb;
+        --danger: #f87171; --ok: #4ade80; --warn: #fbbf24;
       }
     }
-    body { font: 14px system-ui, sans-serif; max-width: 480px; margin: 40px auto; padding: 0 16px; color: var(--fg); background: var(--bg); }
-    h2 { margin-top: 0; }
-    label { display: block; margin: 12px 0 4px; }
-    input { width: 100%; box-sizing: border-box; padding: 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--input); color: var(--fg); }
-    button { margin-top: 12px; padding: 8px 16px; border: none; border-radius: 6px; background: var(--btn); color: #fff; cursor: pointer; font: inherit; }
-    button:hover { background: var(--btn-hover); }
-    .hint { font-size: 12px; color: var(--muted); margin-top: 8px; }
-    #status { margin-top: 8px; color: var(--ok); }
+    * { box-sizing: border-box; }
+    body { font: 14px system-ui, sans-serif; background: var(--bg); color: var(--fg); margin: 0; padding: 32px 16px; }
+    .card { max-width: 640px; margin: 0 auto; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; box-shadow: 0 10px 30px rgba(0,0,0,.06); }
+    .header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+    .logo { width: 36px; height: 36px; border-radius: 8px; background: linear-gradient(135deg,#1d4ed8,#06b6d4); display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; }
+    h2 { margin: 0; font-size: 20px; }
+    p.sub { margin: 4px 0 20px; color: var(--muted); }
+    label { display: block; margin: 16px 0 6px; font-weight: 600; }
+    .input-row { display: flex; gap: 8px; }
+    input[type="password"], input[type="text"] {
+      flex: 1; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px;
+      background: var(--input); color: var(--fg); font: inherit;
+    }
+    .icon-btn { padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--input); color: var(--fg); cursor: pointer; }
+    .actions { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+    button { padding: 10px 16px; border: none; border-radius: 8px; background: var(--primary); color: #fff; cursor: pointer; font: inherit; font-weight: 600; }
+    button:hover { background: var(--primary-hover); }
+    button.secondary { background: transparent; color: var(--fg); border: 1px solid var(--border); }
+    button.secondary:hover { background: var(--input); }
+    button.danger { background: transparent; color: var(--danger); border: 1px solid var(--danger); }
+    .hint { font-size: 12px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
+    .status { margin-top: 12px; min-height: 20px; font-size: 13px; }
+    .status.ok { color: var(--ok); }
+    .status.err { color: var(--danger); }
+    .status.warn { color: var(--warn); }
+    .tier { margin-top: 12px; padding: 12px; border-radius: 8px; background: var(--bg); font-size: 13px; color: var(--muted); }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
   </style>
 </head>
 <body>
-  <h2>Options</h2>
-  <label for="apiKey">Jina API key (optional)</label>
-  <input id="apiKey" type="password" placeholder="Leave empty to use free tier (20 req/min per IP)" />
-  <button id="save">Save</button>
-  <div id="status"></div>
-  <p class="hint">Get a key at https://jina.ai/reader — increases rate limits. Stored in chrome.storage.sync.</p>
+  <div class="card">
+    <div class="header">
+      <span class="logo">M</span>
+      <div>
+        <h2 id="title">Options</h2>
+        <p class="sub" id="subtitle">Configure MdReader</p>
+      </div>
+    </div>
+
+    <label for="apiKey" id="labelKey">Jina API key (optional)</label>
+    <div class="input-row">
+      <input id="apiKey" type="password" placeholder="" />
+      <button type="button" class="icon-btn" id="toggle" aria-label="Show/hide key">👁</button>
+    </div>
+    <div class="hint" id="hint"></div>
+
+    <div class="tier" id="tierInfo"></div>
+
+    <div class="actions">
+      <button id="save" type="button">Save</button>
+      <button id="test" class="secondary" type="button">Test</button>
+      <button id="clear" class="danger" type="button">Clear</button>
+    </div>
+    <div class="status" id="status"></div>
+  </div>
+
   <script src="options.js"></script>
 </body>
 </html>

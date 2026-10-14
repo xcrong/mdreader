@@ -1,23 +1,107 @@
 {
-  "extName": { "message": "MdReader" },
-  "extDescription": { "message": "通过 r.jina.ai 将网页转换为 Markdown" },
-  "menuCopy": { "message": "复制页面为 Markdown" },
-  "menuDownload": { "message": "下载页面为 .md" },
-  "popupTitle": { "message": "页面转 Markdown" },
-  "popupCopy": { "message": "复制到剪贴板" },
-  "popupDownload": { "message": "下载 .md" },
-  "popupWorking": { "message": "处理中..." },
-  "popupDone": { "message": "完成。" },
-  "popupNoTab": { "message": "没有活动标签页。" },
-  "popupFailed": { "message": "失败。" },
-  "notifyUnsupportedUrl": { "message": "仅支持 http(s) 链接。" },
-  "notifyCopied": { "message": "已复制 $1 个字符到剪贴板。", "placeholders": { "chars": { "content": "$1" } } },
-  "notifyDownloadStarted": { "message": "已开始下载。" },
-  "notifyFailed": { "message": "失败：$1", "placeholders": { "error": { "content": "$1" } } },
-  "optionsTitle": { "message": "选项" },
-  "optionsApiKeyLabel": { "message": "Jina API Key（可选）" },
-  "optionsPlaceholder": { "message": "留空使用免费版（20 次/分钟/IP）" },
-  "optionsSave": { "message": "保存" },
-  "optionsSaved": { "message": "已保存。" },
-  "optionsHint": { "message": "在 https://jina.ai/reader 获取密钥以提高限额，密钥保存在 chrome.storage.sync。" }
+  "extName": {
+    "message": "MdReader"
+  },
+  "extDescription": {
+    "message": "通过 r.jina.ai 将网页转换为 Markdown"
+  },
+  "menuCopy": {
+    "message": "复制页面为 Markdown"
+  },
+  "menuDownload": {
+    "message": "下载页面为 .md"
+  },
+  "popupTitle": {
+    "message": "页面转 Markdown"
+  },
+  "popupCopy": {
+    "message": "复制到剪贴板"
+  },
+  "popupDownload": {
+    "message": "下载 .md"
+  },
+  "popupWorking": {
+    "message": "处理中..."
+  },
+  "popupDone": {
+    "message": "完成。"
+  },
+  "popupNoTab": {
+    "message": "没有活动标签页。"
+  },
+  "popupFailed": {
+    "message": "失败。"
+  },
+  "notifyUnsupportedUrl": {
+    "message": "仅支持 http(s) 链接。"
+  },
+  "notifyCopied": {
+    "message": "已复制 $1 个字符到剪贴板。",
+    "placeholders": {
+      "chars": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifyDownloadStarted": {
+    "message": "已开始下载。"
+  },
+  "notifyFailed": {
+    "message": "失败：$1",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "optionsTitle": {
+    "message": "选项"
+  },
+  "optionsApiKeyLabel": {
+    "message": "Jina API Key（可选）"
+  },
+  "optionsPlaceholder": {
+    "message": "留空使用免费版（20 次/分钟/IP）"
+  },
+  "optionsSave": {
+    "message": "保存"
+  },
+  "optionsSaved": {
+    "message": "已保存。"
+  },
+  "optionsHint": {
+    "message": "在 https://jina.ai/reader 获取密钥以提高限额，密钥保存在 chrome.storage.sync。"
+  },
+  "optionsSubtitle": {
+    "message": "配置 MdReader"
+  },
+  "optionsTest": {
+    "message": "测试"
+  },
+  "optionsClear": {
+    "message": "清除"
+  },
+  "optionsTierFree": {
+    "message": "免费版：每 IP 20 次/分钟。添加密钥可提高限额。"
+  },
+  "optionsTierKey": {
+    "message": "已配置 API 密钥：已启用更高限额。"
+  },
+  "optionsTestWorking": {
+    "message": "测试中..."
+  },
+  "optionsTestOk": {
+    "message": "成功（HTTP $1，$2 字符）",
+    "placeholders": {
+      "status": {
+        "content": "$1"
+      },
+      "chars": {
+        "content": "$2"
+      }
+    }
+  },
+  "optionsCleared": {
+    "message": "已清除。"
+  }
 }
