@@ -65,11 +65,15 @@ jobs:
           cat SHA256SUMS.txt
           ls -lh "mdreader_${VER}".* SHA256SUMS.txt
 
-      - name: Optional CRX (needs CRX_PRIVATE_KEY secret)
-        if: ${{ secrets.CRX_PRIVATE_KEY != '' }}
+      - name: Optional CRX note
+        env:
+          CRX_KEY: ${{ secrets.CRX_PRIVATE_KEY }}
         run: |
-          echo "CRX build requested but skipped: Chrome dropped sideloaded CRX; use Web Store or chromium.zip"
-          echo "Set CW_* secrets + chrome-webstore upload workflow for store publishing instead."
+          if [ -n "$CRX_KEY" ]; then
+            echo "CRX build requested but skipped: Chrome dropped sideloaded CRX; use Web Store or chromium.zip instead."
+          else
+            echo "No CRX_PRIVATE_KEY secret; skipping CRX (chromium.zip covers manual install)."
+          fi
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
