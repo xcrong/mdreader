@@ -1,0 +1,23 @@
+{
+  "extName": { "message": "MdReader" },
+  "extDescription": { "message": "Convert web pages to Markdown via r.jina.ai" },
+  "menuCopy": { "message": "Copy page as Markdown" },
+  "menuDownload": { "message": "Download page as .md" },
+  "popupTitle": { "message": "Page to Markdown" },
+  "popupCopy": { "message": "Copy to clipboard" },
+  "popupDownload": { "message": "Download .md" },
+  "popupWorking": { "message": "Working..." },
+  "popupDone": { "message": "Done." },
+  "popupNoTab": { "message": "No active tab." },
+  "popupFailed": { "message": "Failed." },
+  "notifyUnsupportedUrl": { "message": "Only http(s) URLs are supported." },
+  "notifyCopied": { "message": "Copied $1 chars to clipboard.", "placeholders": { "chars": { "content": "$1" } } },
+  "notifyDownloadStarted": { "message": "Download started." },
+  "notifyFailed": { "message": "Failed: $1", "placeholders": { "error": { "content": "$1" } } },
+  "optionsTitle": { "message": "Options" },
+  "optionsApiKeyLabel": { "message": "Jina API key (optional)" },
+  "optionsPlaceholder": { "message": "Leave empty to use free tier (20 req/min per IP)" },
+  "optionsSave": { "message": "Save" },
+  "optionsSaved": { "message": "Saved." },
+  "optionsHint": { "message": "Get a key at https://jina.ai/reader to increase rate limits. Stored in chrome.storage.sync." }
+}
