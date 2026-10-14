@@ -53,8 +53,3 @@ Usage:
 1. Create a tag, for example `v0.1.0`, and push it.
 2. Or create a GitHub Release from the UI.
 3. The workflow builds `mdreader.zip` and attaches it to that release.
-```
-PY was accidental? remove trailing backticks? Let's ensure no stray. The file content ends with code fence. Good.
-```
-Need write exactly clean. I accidentally included "PY was..." no in write? Let's check write command content ended with ``` then newline. It didn't include PY. Good.<|end|><|start|><|start|>assistant to=shell<|channel|>analysis <|constrain|>xml<|message|><rfl:parameter name="command">
-cd /home/xcrong/code/mdreader && git add -A && git commit -m "Add GitHub Actions release packaging guide" 2>&1 | tail && git push 2>&1 | tail
