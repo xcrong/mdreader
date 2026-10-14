@@ -1,0 +1,107 @@
+{
+  "extName": {
+    "message": "MdReader"
+  },
+  "extDescription": {
+    "message": "透過 r.jina.ai 將網頁轉換為 Markdown"
+  },
+  "menuCopy": {
+    "message": "複製頁面為 Markdown"
+  },
+  "menuDownload": {
+    "message": "下載頁面為 .md"
+  },
+  "popupTitle": {
+    "message": "頁面轉 Markdown"
+  },
+  "popupCopy": {
+    "message": "複製到剪貼簿"
+  },
+  "popupDownload": {
+    "message": "下載 .md"
+  },
+  "popupWorking": {
+    "message": "處理中..."
+  },
+  "popupDone": {
+    "message": "完成。"
+  },
+  "popupNoTab": {
+    "message": "沒有作用中分頁。"
+  },
+  "popupFailed": {
+    "message": "失敗。"
+  },
+  "notifyUnsupportedUrl": {
+    "message": "僅支援 http(s) 連結。"
+  },
+  "notifyCopied": {
+    "message": "已複製 $1 個字元到剪貼簿。",
+    "placeholders": {
+      "chars": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifyDownloadStarted": {
+    "message": "已開始下載。"
+  },
+  "notifyFailed": {
+    "message": "失敗：$1",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "optionsTitle": {
+    "message": "選項"
+  },
+  "optionsSubtitle": {
+    "message": "設定 MdReader"
+  },
+  "optionsApiKeyLabel": {
+    "message": "Jina API 金鑰（可選）"
+  },
+  "optionsPlaceholder": {
+    "message": "留空使用免費版（20 次/分鐘/IP）"
+  },
+  "optionsSave": {
+    "message": "儲存"
+  },
+  "optionsTest": {
+    "message": "測試"
+  },
+  "optionsClear": {
+    "message": "清除"
+  },
+  "optionsHint": {
+    "message": "前往 https://jina.ai/reader 取得金鑰以提高限额，金鑰儲存在 chrome.storage.sync。"
+  },
+  "optionsTierFree": {
+    "message": "免費版：每 IP 20 次/分鐘。新增金鑰可提高限额。"
+  },
+  "optionsTierKey": {
+    "message": "已設定 API 金鑰：已啟用更高限额。"
+  },
+  "optionsTestWorking": {
+    "message": "測試中..."
+  },
+  "optionsTestOk": {
+    "message": "成功（HTTP $1，$2 字元）",
+    "placeholders": {
+      "status": {
+        "content": "$1"
+      },
+      "chars": {
+        "content": "$2"
+      }
+    }
+  },
+  "optionsCleared": {
+    "message": "已清除。"
+  },
+  "optionsSaved": {
+    "message": "已儲存。"
+  }
+}

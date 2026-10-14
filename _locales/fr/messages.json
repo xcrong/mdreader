@@ -1,0 +1,107 @@
+{
+  "extName": {
+    "message": "MdReader"
+  },
+  "extDescription": {
+    "message": "Convertir des pages web en Markdown via r.jina.ai"
+  },
+  "menuCopy": {
+    "message": "Copier la page en Markdown"
+  },
+  "menuDownload": {
+    "message": "Télécharger la page en .md"
+  },
+  "popupTitle": {
+    "message": "Page vers Markdown"
+  },
+  "popupCopy": {
+    "message": "Copier dans le presse-papiers"
+  },
+  "popupDownload": {
+    "message": "Télécharger .md"
+  },
+  "popupWorking": {
+    "message": "Traitement..."
+  },
+  "popupDone": {
+    "message": "Terminé."
+  },
+  "popupNoTab": {
+    "message": "Aucun onglet actif."
+  },
+  "popupFailed": {
+    "message": "Échec."
+  },
+  "notifyUnsupportedUrl": {
+    "message": "Seules les URL http(s) sont prises en charge."
+  },
+  "notifyCopied": {
+    "message": "$1 caractères copiés dans le presse-papiers.",
+    "placeholders": {
+      "chars": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifyDownloadStarted": {
+    "message": "Téléchargement démarré."
+  },
+  "notifyFailed": {
+    "message": "Échec : $1",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "optionsTitle": {
+    "message": "Options"
+  },
+  "optionsSubtitle": {
+    "message": "Configurer MdReader"
+  },
+  "optionsApiKeyLabel": {
+    "message": "Clé API Jina (facultative)"
+  },
+  "optionsPlaceholder": {
+    "message": "Laisser vide pour le niveau gratuit (20 req/min/IP)"
+  },
+  "optionsSave": {
+    "message": "Enregistrer"
+  },
+  "optionsTest": {
+    "message": "Tester"
+  },
+  "optionsClear": {
+    "message": "Effacer"
+  },
+  "optionsHint": {
+    "message": "Obtenez une clé sur https://jina.ai/reader pour augmenter les limites. Stockée dans chrome.storage.sync."
+  },
+  "optionsTierFree": {
+    "message": "Niveau gratuit : 20 req/min par IP. Ajoutez une clé pour plus."
+  },
+  "optionsTierKey": {
+    "message": "Clé API configurée : limites supérieures activées."
+  },
+  "optionsTestWorking": {
+    "message": "Test en cours..."
+  },
+  "optionsTestOk": {
+    "message": "OK (HTTP $1, $2 caractères)",
+    "placeholders": {
+      "status": {
+        "content": "$1"
+      },
+      "chars": {
+        "content": "$2"
+      }
+    }
+  },
+  "optionsCleared": {
+    "message": "Effacé."
+  },
+  "optionsSaved": {
+    "message": "Enregistré."
+  }
+}

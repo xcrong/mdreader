@@ -1,0 +1,107 @@
+{
+  "extName": {
+    "message": "MdReader"
+  },
+  "extDescription": {
+    "message": "Преобразование веб-страниц в Markdown через r.jina.ai"
+  },
+  "menuCopy": {
+    "message": "Копировать страницу как Markdown"
+  },
+  "menuDownload": {
+    "message": "Скачать страницу как .md"
+  },
+  "popupTitle": {
+    "message": "Страница в Markdown"
+  },
+  "popupCopy": {
+    "message": "Копировать в буфер"
+  },
+  "popupDownload": {
+    "message": "Скачать .md"
+  },
+  "popupWorking": {
+    "message": "Обработка..."
+  },
+  "popupDone": {
+    "message": "Готово."
+  },
+  "popupNoTab": {
+    "message": "Нет активной вкладки."
+  },
+  "popupFailed": {
+    "message": "Ошибка."
+  },
+  "notifyUnsupportedUrl": {
+    "message": "Поддерживаются только http(s) URL."
+  },
+  "notifyCopied": {
+    "message": "Скопировано $1 символов в буфер.",
+    "placeholders": {
+      "chars": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifyDownloadStarted": {
+    "message": "Загрузка начата."
+  },
+  "notifyFailed": {
+    "message": "Ошибка: $1",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "optionsTitle": {
+    "message": "Настройки"
+  },
+  "optionsSubtitle": {
+    "message": "Настройка MdReader"
+  },
+  "optionsApiKeyLabel": {
+    "message": "API-ключ Jina (необязательно)"
+  },
+  "optionsPlaceholder": {
+    "message": "Оставьте пустым для бесплатного уровня (20 запр/мин/IP)"
+  },
+  "optionsSave": {
+    "message": "Сохранить"
+  },
+  "optionsTest": {
+    "message": "Тест"
+  },
+  "optionsClear": {
+    "message": "Очистить"
+  },
+  "optionsHint": {
+    "message": "Получите ключ на https://jina.ai/reader для повышения лимитов. Хранится в chrome.storage.sync."
+  },
+  "optionsTierFree": {
+    "message": "Бесплатно: 20 запр/мин на IP. Добавьте ключ для большего."
+  },
+  "optionsTierKey": {
+    "message": "API-ключ настроен: более высокие лимиты."
+  },
+  "optionsTestWorking": {
+    "message": "Тестирование..."
+  },
+  "optionsTestOk": {
+    "message": "OK (HTTP $1, $2 символов)",
+    "placeholders": {
+      "status": {
+        "content": "$1"
+      },
+      "chars": {
+        "content": "$2"
+      }
+    }
+  },
+  "optionsCleared": {
+    "message": "Очищено."
+  },
+  "optionsSaved": {
+    "message": "Сохранено."
+  }
+}

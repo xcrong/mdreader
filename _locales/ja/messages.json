@@ -1,0 +1,107 @@
+{
+  "extName": {
+    "message": "MdReader"
+  },
+  "extDescription": {
+    "message": "r.jina.ai を使って Web ページを Markdown に変換"
+  },
+  "menuCopy": {
+    "message": "ページを Markdown としてコピー"
+  },
+  "menuDownload": {
+    "message": "ページを .md でダウンロード"
+  },
+  "popupTitle": {
+    "message": "ページを Markdown に"
+  },
+  "popupCopy": {
+    "message": "クリップボードにコピー"
+  },
+  "popupDownload": {
+    "message": ".md をダウンロード"
+  },
+  "popupWorking": {
+    "message": "処理中..."
+  },
+  "popupDone": {
+    "message": "完了。"
+  },
+  "popupNoTab": {
+    "message": "アクティブなタブがありません。"
+  },
+  "popupFailed": {
+    "message": "失敗しました。"
+  },
+  "notifyUnsupportedUrl": {
+    "message": "http(s) URL のみサポートしています。"
+  },
+  "notifyCopied": {
+    "message": "$1 文字をクリップボードにコピーしました。",
+    "placeholders": {
+      "chars": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifyDownloadStarted": {
+    "message": "ダウンロードを開始しました。"
+  },
+  "notifyFailed": {
+    "message": "失敗: $1",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "optionsTitle": {
+    "message": "オプション"
+  },
+  "optionsSubtitle": {
+    "message": "MdReader の設定"
+  },
+  "optionsApiKeyLabel": {
+    "message": "Jina API キー（任意）"
+  },
+  "optionsPlaceholder": {
+    "message": "空欄で無料プラン（20 req/min/IP）"
+  },
+  "optionsSave": {
+    "message": "保存"
+  },
+  "optionsTest": {
+    "message": "テスト"
+  },
+  "optionsClear": {
+    "message": "クリア"
+  },
+  "optionsHint": {
+    "message": "https://jina.ai/reader でキーを取得すると制限が緩和されます。キーは chrome.storage.sync に保存されます。"
+  },
+  "optionsTierFree": {
+    "message": "無料プラン: 1 IP あたり 20 req/min。キー追加で上限UP。"
+  },
+  "optionsTierKey": {
+    "message": "API キー設定済み: より高い制限が有効です。"
+  },
+  "optionsTestWorking": {
+    "message": "テスト中..."
+  },
+  "optionsTestOk": {
+    "message": "OK (HTTP $1, $2 文字)",
+    "placeholders": {
+      "status": {
+        "content": "$1"
+      },
+      "chars": {
+        "content": "$2"
+      }
+    }
+  },
+  "optionsCleared": {
+    "message": "クリアしました。"
+  },
+  "optionsSaved": {
+    "message": "保存しました。"
+  }
+}

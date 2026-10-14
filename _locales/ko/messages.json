@@ -1,0 +1,107 @@
+{
+  "extName": {
+    "message": "MdReader"
+  },
+  "extDescription": {
+    "message": "r.jina.ai를 통해 웹 페이지를 Markdown으로 변환"
+  },
+  "menuCopy": {
+    "message": "페이지를 Markdown으로 복사"
+  },
+  "menuDownload": {
+    "message": "페이지를 .md로 다운로드"
+  },
+  "popupTitle": {
+    "message": "페이지를 Markdown으로"
+  },
+  "popupCopy": {
+    "message": "클립보드에 복사"
+  },
+  "popupDownload": {
+    "message": ".md 다운로드"
+  },
+  "popupWorking": {
+    "message": "처리 중..."
+  },
+  "popupDone": {
+    "message": "완료."
+  },
+  "popupNoTab": {
+    "message": "활성 탭이 없습니다."
+  },
+  "popupFailed": {
+    "message": "실패했습니다."
+  },
+  "notifyUnsupportedUrl": {
+    "message": "http(s) URL만 지원합니다."
+  },
+  "notifyCopied": {
+    "message": "$1자를 클립보드에 복사했습니다.",
+    "placeholders": {
+      "chars": {
+        "content": "$1"
+      }
+    }
+  },
+  "notifyDownloadStarted": {
+    "message": "다운로드를 시작했습니다."
+  },
+  "notifyFailed": {
+    "message": "실패: $1",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "optionsTitle": {
+    "message": "옵션"
+  },
+  "optionsSubtitle": {
+    "message": "MdReader 설정"
+  },
+  "optionsApiKeyLabel": {
+    "message": "Jina API 키(선택)"
+  },
+  "optionsPlaceholder": {
+    "message": "비워두면 무료 플랜 (20회/분/IP)"
+  },
+  "optionsSave": {
+    "message": "저장"
+  },
+  "optionsTest": {
+    "message": "테스트"
+  },
+  "optionsClear": {
+    "message": "지우기"
+  },
+  "optionsHint": {
+    "message": "https://jina.ai/reader 에서 키를 받으면 제한이 높아집니다. 키는 chrome.storage.sync에 저장됩니다."
+  },
+  "optionsTierFree": {
+    "message": "무료: IP당 20회/분. 키를 추가하면 한도 증가."
+  },
+  "optionsTierKey": {
+    "message": "API 키 설정됨: 더 높은 한도 사용 가능."
+  },
+  "optionsTestWorking": {
+    "message": "테스트 중..."
+  },
+  "optionsTestOk": {
+    "message": "OK (HTTP $1, $2자)",
+    "placeholders": {
+      "status": {
+        "content": "$1"
+      },
+      "chars": {
+        "content": "$2"
+      }
+    }
+  },
+  "optionsCleared": {
+    "message": "지웠습니다."
+  },
+  "optionsSaved": {
+    "message": "저장했습니다."
+  }
+}
